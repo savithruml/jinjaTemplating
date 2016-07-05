@@ -1,2 +1,2 @@
 # jinjaTemplating
-Library for Jinja Templating
+Library for Jinja Templating & Tut
