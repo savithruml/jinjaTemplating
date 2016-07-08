@@ -39,11 +39,11 @@ def main():
 
     pushList = ifaceConf(iface_name, iface_desc, iface_ipv4_add, iface_ipv4_mask, templatePath)
 
-    print pushList
+    #print pushList
 
     for command in pushList:
         cmd = command + "\n"
-        print cmd
+        #print cmd
         remote_conn.send(cmd)
 
 if __name__ == '__main__':
