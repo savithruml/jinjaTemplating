@@ -18,17 +18,35 @@ def generateTemplates(owd, templatePath, count):
 
     loader = jinja2.FileSystemLoader(templatePath)
     jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
-    template = jenv.get_template("database-tier.j2")
+    template_database = jenv.get_template("database-tier.j2")
+    template_app = jenv.get_template("app-tier.j2")
+    template_web = jenv.get_template("web-tier.j2")
 
     os.chdir(owd)
 
     for i in range(1, int(count) + 1):
-    	hello = template.render(counter=i)
+    	hello = template_database.render(counter=i)
         file = open("rendered/database-tier/database-tier-" + str(i) + ".yaml", "w")
 	file.write(hello)
 	file.close()
 
 	print "Successfully created database-tier-" + str(i) + ".yaml"
+
+    for i in range(1, int(count) + 1):
+        hello = template_app.render(counter=i)
+        file = open("rendered/app-tier/app-tier-" + str(i) + ".yaml", "w")
+        file.write(hello)
+        file.close()
+
+        print "Successfully created app-tier-" + str(i) + ".yaml"
+
+    for i in range(1, int(count) + 1):
+        hello = template_web.render(counter=i)
+        file = open("rendered/web-tier/web-tier-" + str(i) + ".yaml", "w")
+        file.write(hello)
+        file.close()
+
+        print "Successfully created web-tier-" + str(i) + ".yaml"
 
 def main():
 
